@@ -83,3 +83,14 @@ background-color: #72bad2;
 #root{
   background-color: beige;
 }
+
+.body{
+  padding: 20px;
+}
+
+.item-container{
+  position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 250px;
+}

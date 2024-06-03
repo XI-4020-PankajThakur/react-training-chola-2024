@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Cart from "./Cart";
 import ProductList from "./Productlist";
+import Header from "./Header";
+import CarouselPart from "./Carousel";
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -21,9 +23,19 @@ alert("added!");
 
   return (
     <div>
-      <h1>Welcome to MyAmazon</h1>
-      <ProductList addToCart={addToCart}  />
+      <Header /><h1>Welcome to MyAmazon</h1>
+      <CarouselPart 
+      
+      
+      />
+      <div className="body">
+      
+      <ProductList addToCart={addToCart} 
+      
+      
+      />
       <Cart cart={cart} />
+      </div>
     </div>
   );
 };
