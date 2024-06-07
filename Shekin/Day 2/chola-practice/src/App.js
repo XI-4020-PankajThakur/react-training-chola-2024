@@ -29,7 +29,7 @@ function App() {
       id: 4,
       description: 'Product 4',
       price: 25.0,
-      image: '/image/pro4.png',
+      image : '/image/pro4.png',
     },
   ];
 
