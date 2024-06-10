@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Example</title>
+    <script>
+        function handleFormSubmission(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the value from the input box
+            const inputValue = document.getElementById('userInput').value;
+            
+            // Display the value in a window alert
+            alert(inputValue);
+            
+            // Submit the form programmatically
+            document.getElementById('myForm').submit();
+        }
+    </script>
+</head>
+<body>
+    <form id="myForm" method="post" action="https://www.google.com">
+        <input type="text" id="userInput" name="userInput" placeholder="Type something here">
+        <button type="submit" onclick="handleFormSubmission(event)">Submit and Alert</button>
+    </form>
+</body>
+</html>
