@@ -17,7 +17,7 @@ function* addGenerator(a, b) {
 
 
   
-function* subtraction(n1, n1) {
+function* subtraction(n1, n2) {
     yield n1 - n2;
   }
   
