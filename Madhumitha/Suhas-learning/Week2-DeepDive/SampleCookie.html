@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        button {
+            margin: 5px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cookie Example</h1>
+    <div>
+        <label for="cookieName">Cookie Name:</label>
+        <input type="text" id="cookieName" value="username">
+        <label for="cookieValue">Cookie Value:</label>
+        <input type="text" id="cookieValue" value="JohnDoe">
+        <label for="cookieDays">Days:</label>
+        <input type="number" id="cookieDays" value="7">
+        <button onclick="setCookie()">Set Cookie</button>
+        <button onclick="getCookie()">Get Cookie</button>
+        <button onclick="eraseCookie()">Delete Cookie</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        // Function to set a cookie
+        function setCookie() {
+            const name = document.getElementById('cookieName').value;
+            const value = document.getElementById('cookieValue').value;
+            const days = document.getElementById('cookieDays').value;
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+            document.getElementById('result').innerText = `Cookie ${name} set with value ${value}`;
+        }
+
+        // Function to get a cookie by name
+        function getCookie() {
+            const name = document.getElementById('cookieName').value;
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) {
+                    const value = c.substring(nameEQ.length, c.length);
+                    document.getElementById('result').innerText = `Cookie ${name} value is ${value}`;
+                    return;
+                }
+            }
+            document.getElementById('result').innerText = `Cookie ${name} not found`;
+        }
+
+        // Function to delete a cookie
+        function eraseCookie() {
+            const name = document.getElementById('cookieName').value;
+            document.cookie = name + '=; Max-Age=-99999999;';
+            document.getElementById('result').innerText = `Cookie ${name} deleted`;
+        }
+    </script>
+</body>
+</html>
